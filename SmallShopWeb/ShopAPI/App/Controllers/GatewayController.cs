@@ -5,7 +5,7 @@ namespace ShopAPI.App.Controllers
 {
     [Route("api")]
     [ApiController]
-    public class FacadeController : ControllerBase
+    public class GatewayController : ControllerBase
     {
 
         [HttpGet("info")]
