@@ -17,7 +17,5 @@
             return await httpClient.GetFromJsonAsync<Product[]>("api/products");
         }
 
-
-
     }
 }

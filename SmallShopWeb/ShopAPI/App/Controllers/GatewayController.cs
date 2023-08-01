@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace ShopAPI.App.Controllers
 {
@@ -20,9 +21,15 @@ namespace ShopAPI.App.Controllers
         }
 
         [HttpGet("product/list")]
-        public async Task<IEnumerable<Product>> GetProducts()
+        public async Task<IActionResult> GetProducts()
         {
-            return await catalogClient.GetProductsAsync();
+            var result = await catalogClient.GetProductsAsync();
+            if (result is null)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+
+            return Ok(result);
         }
 
     }
