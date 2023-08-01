@@ -1,14 +1,17 @@
+using ShopAPI.App;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddHttpClient<ICatalogClient, CatalogClient>();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
-app.UseHttpsRedirection();
+// todo: turn on https (check launchSettings.json)
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

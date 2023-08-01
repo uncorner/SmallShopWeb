@@ -7,8 +7,8 @@ builder.Services.AddControllers();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
-app.UseHttpsRedirection();
+// todo: turn on https (check launchSettings.json)
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
