@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SmallShopWeb.ShopAPI.App;
 using System.Net;
 
-namespace ShopAPI.App.Controllers
+namespace SmallShopWeb.ShopAPI.App.Controllers
 {
     [Route("api")]
     [ApiController]

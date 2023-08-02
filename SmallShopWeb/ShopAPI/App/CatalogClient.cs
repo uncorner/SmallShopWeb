@@ -1,6 +1,6 @@
-﻿using ShopCommon.App;
+﻿using SmallShopWeb.ShopCommon.App;
 
-namespace ShopAPI.App
+namespace SmallShopWeb.ShopAPI.App
 {
     internal class CatalogClient : ICatalogClient
     {
