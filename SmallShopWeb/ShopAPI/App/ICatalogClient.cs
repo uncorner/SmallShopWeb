@@ -1,4 +1,6 @@
-﻿namespace ShopAPI.App
+﻿using ShopCommon.App;
+
+namespace ShopAPI.App
 {
     public interface ICatalogClient
     {

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ShopCommon.App;
 
 namespace Catalog.App.Controllers
 {

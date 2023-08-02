@@ -1,4 +1,6 @@
-﻿namespace ShopAPI.App
+﻿using ShopCommon.App;
+
+namespace ShopAPI.App
 {
     internal class CatalogClient : ICatalogClient
     {
