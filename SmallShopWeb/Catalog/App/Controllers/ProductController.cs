@@ -16,7 +16,7 @@ namespace SmallShopWeb.Catalog.App.Controllers
         }
 
         [HttpGet("products")]
-        public async Task<IActionResult> GetProducts()
+        public IActionResult GetProducts()
         {
             var result = new[] {
                 new Product(1, "Майка", "Майка с надписью", 10),
