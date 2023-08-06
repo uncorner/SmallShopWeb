@@ -1,6 +1,6 @@
 ﻿namespace SmallShopWeb.ShopCommon.Models
 {
 
-    public record Product(string Name, string Description, decimal Price);
+    public record Product(int Id, string Name, string Description, decimal Price);
 
 }
