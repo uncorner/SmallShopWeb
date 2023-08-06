@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SmallShopWeb.ShopAPI.App;
+using SmallShopWeb.ShopAPI.App.Network;
 using System.Net;
 
 namespace SmallShopWeb.ShopAPI.App.Controllers

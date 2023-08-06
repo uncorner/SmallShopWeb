@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using SmallShopWeb.Catalog;
+using SmallShopWeb.Catalog.App;
 using SmallShopWeb.Catalog.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);

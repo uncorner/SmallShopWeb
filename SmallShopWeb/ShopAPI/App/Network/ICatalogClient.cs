@@ -1,6 +1,6 @@
-﻿using SmallShopWeb.ShopCommon.App;
+﻿using SmallShopWeb.ShopCommon.Models;
 
-namespace SmallShopWeb.ShopAPI.App
+namespace SmallShopWeb.ShopAPI.App.Network
 {
     public interface ICatalogClient
     {

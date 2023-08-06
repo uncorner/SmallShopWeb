@@ -1,3 +1,4 @@
+using Polly;
 using SmallShopWeb.ShopAPI.App;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddHttpClient<ICatalogClient, CatalogClient>();
+builder.Services.AddCustomServices();
 
 var app = builder.Build();
 

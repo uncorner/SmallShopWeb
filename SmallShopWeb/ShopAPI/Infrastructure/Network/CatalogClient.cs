@@ -1,6 +1,7 @@
-﻿using SmallShopWeb.ShopCommon.App;
+﻿using SmallShopWeb.ShopAPI.App.Network;
+using SmallShopWeb.ShopCommon.Models;
 
-namespace SmallShopWeb.ShopAPI.App
+namespace SmallShopWeb.ShopAPI.Infrastructure.Network
 {
     internal class CatalogClient : ICatalogClient
     {
