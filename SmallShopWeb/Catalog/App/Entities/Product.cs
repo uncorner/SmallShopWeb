@@ -6,10 +6,10 @@ namespace SmallShopWeb.Catalog.App.Entities
     {
         public int Id { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(150)]
         public string Name { get; set; }
 
-        [MaxLength(255)]
+        [MaxLength(1000)]
         public string? Description { get; set; }
 
         public decimal Price { get; set; }

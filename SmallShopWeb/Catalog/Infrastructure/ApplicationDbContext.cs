@@ -11,5 +11,10 @@ namespace SmallShopWeb.Catalog.Infrastructure
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Seed();
+        }
+
     }
 }
