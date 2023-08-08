@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SmallShopWeb.Catalog.App.Repository;
-using SmallShopWeb.ShopCommon.Models;
+using SmallShopWeb.ShopCommon.Dto;
 
 namespace SmallShopWeb.Catalog.App.Controllers
 {
@@ -24,7 +24,7 @@ namespace SmallShopWeb.Catalog.App.Controllers
             var products = await productRepository.GetAllAsync();
 
             var result = products.Select(p =>
-                new Product(p.Id, p.Name, p.Description ?? "", p.Price)).ToArray();
+                new ProductInfo(p.Id, p.Name, p.Description ?? "", p.Price)).ToArray();
 
             return Ok(result);
         }

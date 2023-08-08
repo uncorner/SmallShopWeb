@@ -1,5 +1,5 @@
 ﻿using SmallShopWeb.ShopAPI.App.Network;
-using SmallShopWeb.ShopCommon.Models;
+using SmallShopWeb.ShopCommon.Dto;
 
 namespace SmallShopWeb.ShopAPI.Infrastructure.Network
 {
@@ -15,9 +15,9 @@ namespace SmallShopWeb.ShopAPI.Infrastructure.Network
             this.httpClient.BaseAddress = new Uri(BaseAddr);
         }
 
-        public async Task<IEnumerable<Product>?> GetProductsAsync()
+        public async Task<IEnumerable<ProductInfo>?> GetProductsAsync()
         {
-            return await httpClient.GetFromJsonAsync<Product[]>("api/products");
+            return await httpClient.GetFromJsonAsync<ProductInfo[]>("api/products");
         }
 
     }

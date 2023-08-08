@@ -1,9 +1,9 @@
-﻿using SmallShopWeb.ShopCommon.Models;
+﻿using SmallShopWeb.ShopCommon.Dto;
 
 namespace SmallShopWeb.ShopAPI.App.Network
 {
     public interface ICatalogClient
     {
-        Task<IEnumerable<Product>?> GetProductsAsync();
+        Task<IEnumerable<ProductInfo>?> GetProductsAsync();
     }
 }
