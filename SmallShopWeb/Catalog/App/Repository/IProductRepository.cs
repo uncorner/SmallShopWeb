@@ -8,5 +8,7 @@ namespace SmallShopWeb.Catalog.App.Repository
 
         void Add(Product product);
 
+        Task<IEnumerable<Product>> GetByIds(IEnumerable<int> ids);
+
     }
 }

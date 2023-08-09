@@ -4,7 +4,7 @@ using SmallShopWeb.Catalog.App.Repository;
 
 namespace SmallShopWeb.Catalog.Infrastructure.Repository
 {
-    class ProductRepository : IProductRepository
+    internal class ProductRepository : IProductRepository
     {
         private readonly ApplicationDbContext dbContext;
 
@@ -19,7 +19,12 @@ namespace SmallShopWeb.Catalog.Infrastructure.Repository
         }
 
         public async Task<IEnumerable<Product>> GetAllAsync() =>
-            await dbContext.Products.ToListAsync();
-        
+            await dbContext.Products.ToArrayAsync();
+
+        public async Task<IEnumerable<Product>> GetByIds(IEnumerable<int> ids)
+        {
+            return await dbContext.Products.Where(i => ids.Contains(i.Id)).ToArrayAsync()
+                ?? Array.Empty<Product>();
+        }
     }
 }
