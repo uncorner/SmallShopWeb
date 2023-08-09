@@ -11,8 +11,12 @@ namespace SmallShopWeb.Catalog.Infrastructure.Repository
             this.dbContext = dbContext;
         }
 
+        #region Repositories
+
         public IProductRepository CreateProductRepository() => 
             new ProductRepository(dbContext);
+
+        #endregion
 
         public int SaveChanges()
         {
@@ -34,10 +38,6 @@ namespace SmallShopWeb.Catalog.Infrastructure.Repository
         {
             await dbContext.DisposeAsync();
         }
-
-        
-
-
         #endregion
 
     }
