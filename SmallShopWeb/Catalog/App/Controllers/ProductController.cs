@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SmallShopWeb.Catalog.App.Dto;
+using SmallShopWeb.Catalog.App.Entities;
 using SmallShopWeb.Catalog.App.Repository;
 using SmallShopWeb.ShopCommon.Dto;
 
@@ -27,6 +29,24 @@ namespace SmallShopWeb.Catalog.App.Controllers
                 new ProductInfo(p.Id, p.Name, p.Description ?? "", p.Price)).ToArray();
 
             return Ok(result);
+        }
+
+        [HttpPost("products")]
+        public async Task<IActionResult> CreateProduct([FromBody] CreateProductData data)
+        {
+            using var unitOfWork = unitOfWorkFactory.CreateUnitOfWork();
+            var productRepository = unitOfWork.CreateProductRepository();
+
+            var product = new Product(data.Name)
+            {
+                Description = data.Description,
+                Price = data.Price
+            };
+
+            productRepository.Add(product);
+            await unitOfWork.SaveChangesAsync();
+
+            return Ok(product.Id);
         }
 
     }
