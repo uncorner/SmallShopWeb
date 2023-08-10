@@ -12,5 +12,7 @@ namespace SmallShopWeb.Catalog.App.Repository
 
         Task<IEnumerable<Product>> GetByIds(IEnumerable<int> ids);
 
+        Task<IEnumerable<int>> CheckProductsExist(IEnumerable<int> ids);
+
     }
 }

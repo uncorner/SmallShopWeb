@@ -31,5 +31,12 @@ namespace SmallShopWeb.Catalog.Infrastructure.Repository
             return await dbContext.Products.Where(i => ids.Contains(i.Id)).ToArrayAsync()
                 ?? Array.Empty<Product>();
         }
+
+        public async Task<IEnumerable<int>> CheckProductsExist(IEnumerable<int> productIds)
+        {
+            return await dbContext.Products.Where(i => productIds.Contains(i.Id))
+                .Select(i => i.Id).ToArrayAsync();
+        }
+
     }
 }
