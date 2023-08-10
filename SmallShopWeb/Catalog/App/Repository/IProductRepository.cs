@@ -14,5 +14,7 @@ namespace SmallShopWeb.Catalog.App.Repository
 
         Task<IEnumerable<int>> CheckProductsExist(IEnumerable<int> ids);
 
+        Task BatchRemove(IEnumerable<int> ids);
+
     }
 }

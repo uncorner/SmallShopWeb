@@ -5,7 +5,6 @@ using SmallShopWeb.Catalog.App.Repository;
 using SmallShopWeb.ShopCommon.Dto;
 using System.Collections.Immutable;
 using System.Net;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SmallShopWeb.Catalog.App.Controllers
 {
@@ -83,16 +82,15 @@ namespace SmallShopWeb.Catalog.App.Controllers
         }
 
         [HttpDelete("products")]
-        public async Task RemoveProducts([FromBody] int[] productIds)
+        public async Task<IActionResult> RemoveProducts([FromBody] int[] productIds)
         {
-            productIds = productIds.Distinct();
+            productIds = productIds.Distinct().ToArray();
 
             using var unitOfWork = unitOfWorkFactory.CreateUnitOfWork();
             var productRepository = unitOfWork.CreateProductRepository();
-
             var existedIds = await productRepository.CheckProductsExist(productIds);
 
-            if (productIds.Count != existedIds.Count)
+            if (productIds.Length != existedIds.Count())
             {
                 foreach(var id in productIds) {
                     if (!existedIds.Contains(id))
@@ -103,9 +101,8 @@ namespace SmallShopWeb.Catalog.App.Controllers
                 }
             }
 
-
-
-
+            await productRepository.BatchRemove(productIds);
+            return Ok();
         }
 
     }
