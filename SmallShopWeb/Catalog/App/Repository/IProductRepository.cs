@@ -6,7 +6,9 @@ namespace SmallShopWeb.Catalog.App.Repository
     {
         Task<IEnumerable<Product>> GetAllAsync();
 
-        void Add(Product product);
+        Task Add(Product product);
+
+        Task AddRange(IEnumerable<Product> products);
 
         Task<IEnumerable<Product>> GetByIds(IEnumerable<int> ids);
 

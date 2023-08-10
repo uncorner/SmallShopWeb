@@ -3,6 +3,7 @@ using SmallShopWeb.Catalog.App.Dto;
 using SmallShopWeb.Catalog.App.Entities;
 using SmallShopWeb.Catalog.App.Repository;
 using SmallShopWeb.ShopCommon.Dto;
+using System.Collections.Immutable;
 using System.Net;
 
 namespace SmallShopWeb.Catalog.App.Controllers
@@ -32,23 +33,23 @@ namespace SmallShopWeb.Catalog.App.Controllers
             return Ok(result);
         }
 
-        // todo: array products
         [HttpPost("products")]
-        public async Task<IActionResult> CreateProduct([FromBody] CreateProductData data)
+        public async Task<IActionResult> CreateProducts([FromBody] CreateProductData[] datas)
         {
             using var unitOfWork = unitOfWorkFactory.CreateUnitOfWork();
             var productRepository = unitOfWork.CreateProductRepository();
 
-            var product = new Product(data.Name)
+            var products = datas.Select(i => new Product(i.Name)
             {
-                Description = data.Description,
-                Price = data.Price
-            };
+                Description = i.Description,
+                Price = i.Price
+            }).ToArray();
 
-            productRepository.Add(product);
+            await productRepository.AddRange(products);
             await unitOfWork.SaveChangesAsync();
 
-            return Ok(product.Id);
+            var ids = products.Select(i => i.Id).ToArray();
+            return Ok(ids);
         }
 
         [HttpPut("products")]

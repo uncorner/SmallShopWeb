@@ -13,9 +13,14 @@ namespace SmallShopWeb.Catalog.Infrastructure.Repository
             this.dbContext = dbContext;
         }
 
-        public void Add(Product product)
+        public async Task Add(Product product)
         {
-            dbContext.Products.Add(product);
+            await dbContext.Products.AddAsync(product);
+        }
+
+        public async Task AddRange(IEnumerable<Product> products)
+        {
+            await dbContext.AddRangeAsync(products);
         }
 
         public async Task<IEnumerable<Product>> GetAllAsync() =>
