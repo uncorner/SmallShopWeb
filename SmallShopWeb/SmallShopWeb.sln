@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopAPI", "ShopAPI\ShopAPI.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog", "Catalog\Catalog.csproj", "{2F2B8977-B454-441A-85A2-9571867BD9A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopCommon", "ShopCommon\ShopCommon.csproj", "{C4B2F997-CED4-4E2F-BA7F-14F9E6B29BDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopCommon", "ShopCommon\ShopCommon.csproj", "{C4B2F997-CED4-4E2F-BA7F-14F9E6B29BDF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
