@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Grpc.Net.Client;
+using Microsoft.AspNetCore.Mvc;
 using SmallShopWeb.ShopAPI.App.Network;
 using System.Net;
+using SmallShopWeb.ShopAPI.Protos;
+using SmallShopWeb.ShopCommon.Dto;
 
 namespace SmallShopWeb.ShopAPI.App.Controllers
 {
@@ -21,16 +24,30 @@ namespace SmallShopWeb.ShopAPI.App.Controllers
             return Ok("API info");
         }
 
+        //[HttpGet("product/list")]
+        //public async Task<IActionResult> GetProducts()
+        //{
+        //    var result = await catalogClient.GetProductsAsync();
+        //    if (result is null)
+        //    {
+        //        return StatusCode((int)HttpStatusCode.InternalServerError);
+        //    }
+
+        //    return Ok(result);
+        //}
+
         [HttpGet("product/list")]
         public async Task<IActionResult> GetProducts()
         {
-            var result = await catalogClient.GetProductsAsync();
-            if (result is null)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError);
-            }
+            using var channel = GrpcChannel.ForAddress("https://localhost:7240");
+            var client = new ProductCatalog.ProductCatalogClient(channel);
+                        
+            var listReply = await client.GetProductsAsync(new Google.Protobuf.WellKnownTypes.Empty());
 
-            return Ok(result);
+            var productInfos = listReply.Products.Select(p =>
+                new ProductInfo(p.Id, p.Name, p.Description, p.Price)).ToArray();
+
+            return Ok(productInfos);
         }
 
     }

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "SmallShopWeb.Catalog.Protos";
+option csharp_namespace = "SmallShopWeb.ShopAPI.Protos";
 
 package catalog;
 
