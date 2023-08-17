@@ -1,9 +1,7 @@
-﻿using Grpc.Net.Client;
-using Microsoft.AspNetCore.Mvc;
-using SmallShopWeb.ShopAPI.App.Network;
-using System.Net;
+﻿using Microsoft.AspNetCore.Mvc;
 using SmallShopWeb.ShopAPI.Protos;
 using SmallShopWeb.ShopCommon.Dto;
+using Google.Protobuf.WellKnownTypes;
 
 namespace SmallShopWeb.ShopAPI.App.Controllers
 {
@@ -11,9 +9,9 @@ namespace SmallShopWeb.ShopAPI.App.Controllers
     [ApiController]
     public class GatewayController : ControllerBase
     {
-        private readonly ICatalogClient catalogClient;
+        private readonly ProductCatalog.ProductCatalogClient catalogClient;
 
-        public GatewayController(ICatalogClient catalogClient)
+        public GatewayController(ProductCatalog.ProductCatalogClient catalogClient)
         {
             this.catalogClient = catalogClient;
         }
@@ -39,10 +37,8 @@ namespace SmallShopWeb.ShopAPI.App.Controllers
         [HttpGet("product/list")]
         public async Task<IActionResult> GetProducts()
         {
-            using var channel = GrpcChannel.ForAddress("https://localhost:7240");
-            var client = new ProductCatalog.ProductCatalogClient(channel);
-                        
-            var listReply = await client.GetProductsAsync(new Google.Protobuf.WellKnownTypes.Empty());
+            //TODO: use try catch
+            var listReply = await catalogClient.GetProductsAsync(new Empty());
 
             var productInfos = listReply.Products.Select(p =>
                 new ProductInfo(p.Id, p.Name, p.Description, p.Price)).ToArray();
