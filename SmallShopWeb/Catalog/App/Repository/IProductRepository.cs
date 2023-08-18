@@ -6,15 +6,15 @@ namespace SmallShopWeb.Catalog.App.Repository
     {
         Task<IEnumerable<Product>> GetAllAsync();
 
-        Task Add(Product product);
+        Task AddAsync(Product product);
 
-        Task AddRange(IEnumerable<Product> products);
+        Task AddRangeAsync(IEnumerable<Product> products);
 
-        Task<IEnumerable<Product>> GetByIds(IEnumerable<int> ids);
+        Task<IEnumerable<Product>> GetByIdsAsync(IEnumerable<int> ids);
 
-        Task<IEnumerable<int>> CheckProductsExist(IEnumerable<int> ids);
+        Task<IEnumerable<int>> CheckProductsExistAsync(IEnumerable<int> ids);
 
-        Task BatchRemove(IEnumerable<int> ids);
+        Task BatchRemoveAsync(IEnumerable<int> ids);
 
     }
 }

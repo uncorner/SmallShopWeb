@@ -13,12 +13,12 @@ namespace SmallShopWeb.Catalog.Infrastructure.Repository
             this.dbContext = dbContext;
         }
 
-        public async Task Add(Product product)
+        public async Task AddAsync(Product product)
         {
             await dbContext.Products.AddAsync(product);
         }
 
-        public async Task AddRange(IEnumerable<Product> products)
+        public async Task AddRangeAsync(IEnumerable<Product> products)
         {
             await dbContext.AddRangeAsync(products);
         }
@@ -26,19 +26,19 @@ namespace SmallShopWeb.Catalog.Infrastructure.Repository
         public async Task<IEnumerable<Product>> GetAllAsync() =>
             await dbContext.Products.ToArrayAsync();
 
-        public async Task<IEnumerable<Product>> GetByIds(IEnumerable<int> ids)
+        public async Task<IEnumerable<Product>> GetByIdsAsync(IEnumerable<int> ids)
         {
             return await dbContext.Products.Where(i => ids.Contains(i.Id)).ToArrayAsync()
                 ?? Array.Empty<Product>();
         }
 
-        public async Task<IEnumerable<int>> CheckProductsExist(IEnumerable<int> ids)
+        public async Task<IEnumerable<int>> CheckProductsExistAsync(IEnumerable<int> ids)
         {
             return await dbContext.Products.Where(i => ids.Contains(i.Id))
                 .Select(i => i.Id).ToArrayAsync();
         }
 
-        public async Task BatchRemove(IEnumerable<int> ids)
+        public async Task BatchRemoveAsync(IEnumerable<int> ids)
         {
             await dbContext.Products.Where(i => ids.Contains(i.Id)).ExecuteDeleteAsync();
         }

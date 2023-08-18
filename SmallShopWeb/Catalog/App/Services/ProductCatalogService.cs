@@ -12,12 +12,12 @@ namespace SmallShopWeb.Catalog.App.Services
             this.unitOfWorkFactory = unitOfWorkFactory;
         }
 
-        public Task<ProductListReply> GetProducts(ServerCallContext context)
+        public async Task<ProductListReply> GetProducts(ServerCallContext context)
         {
             using var unitOfWork = unitOfWorkFactory.CreateUnitOfWork();
             var productRepository = unitOfWork.CreateProductRepository();
-            // TODO async
-            var products = productRepository.GetAllAsync().Result;
+
+            var products = await productRepository.GetAllAsync();
 
             var productReplyList = products.Select(p =>
                 new ProductReply()
@@ -31,7 +31,7 @@ namespace SmallShopWeb.Catalog.App.Services
             ProductListReply listReply = new();
             listReply.Products.AddRange(productReplyList);
 
-            return Task.FromResult(listReply);
+            return await Task.FromResult(listReply);
         }
     }
 }
