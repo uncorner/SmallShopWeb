@@ -1,32 +1,13 @@
 syntax = "proto3";
 
-option csharp_namespace = "SmallShopWeb.ShopAPI.Protos";
+option csharp_namespace = "SmallShopWeb.ShopAPI.Infrastructure.Client";
 
 package catalog;
 
 import "google/protobuf/empty.proto";
 
-/*
-message Request{
-    string word = 1;
-}
- 
-message Response{
-    string word = 1;
-    string translation = 2;
-}
- 
-service Translator {
-  // определение метода Translate, 
-  // который получает сообщение Request
-  // и отправляет сообщение Response
-  rpc Translate (Request) returns (Response);
-}
-*/
-
 service ProductCatalog {
     rpc GetProducts (google.protobuf.Empty) returns (ProductListReply);
-
 }
 
 message ProductListReply {

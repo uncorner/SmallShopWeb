@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SmallShopWeb.ShopAPI.Protos;
+using SmallShopWeb.ShopAPI.Infrastructure.Client;
 using SmallShopWeb.ShopCommon.Dto;
 using Google.Protobuf.WellKnownTypes;
 
@@ -21,18 +21,6 @@ namespace SmallShopWeb.ShopAPI.App.Controllers
         {
             return Ok("API info");
         }
-
-        //[HttpGet("product/list")]
-        //public async Task<IActionResult> GetProducts()
-        //{
-        //    var result = await catalogClient.GetProductsAsync();
-        //    if (result is null)
-        //    {
-        //        return StatusCode((int)HttpStatusCode.InternalServerError);
-        //    }
-
-        //    return Ok(result);
-        //}
 
         [HttpGet("product/list")]
         public async Task<IActionResult> GetProducts()
