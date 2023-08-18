@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmallShopWeb.Catalog.App.Repository;
+using SmallShopWeb.Catalog.App.Services;
 using SmallShopWeb.Catalog.Infrastructure;
 using SmallShopWeb.Catalog.Infrastructure.Repository;
 
@@ -14,6 +15,8 @@ namespace SmallShopWeb.Catalog.App
             var connectionString = configuration.GetConnectionString("Default")
                 ?? throw new NullReferenceException("Cannot get connection string");
             services.AddDbContextFactory<ApplicationDbContext>(opt => opt.UseNpgsql(connectionString));
+
+            services.AddTransient<IProductCatalogService, ProductCatalogService>();
         }
 
     }

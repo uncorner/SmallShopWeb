@@ -1,10 +1,9 @@
-﻿using Google.Protobuf.WellKnownTypes;
-using Grpc.Core;
+﻿using Grpc.Core;
 using SmallShopWeb.Catalog.App.Repository;
 
 namespace SmallShopWeb.Catalog.App.Services
 {
-    public class ProductCatalogService : ProductCatalog.ProductCatalogBase
+    public class ProductCatalogService : IProductCatalogService
     {
         private readonly IUnitOfWorkFactory unitOfWorkFactory;
 
@@ -13,7 +12,7 @@ namespace SmallShopWeb.Catalog.App.Services
             this.unitOfWorkFactory = unitOfWorkFactory;
         }
 
-        public override Task<ProductListReply> GetProducts(Empty request, ServerCallContext context)
+        public Task<ProductListReply> GetProducts(ServerCallContext context)
         {
             using var unitOfWork = unitOfWorkFactory.CreateUnitOfWork();
             var productRepository = unitOfWork.CreateProductRepository();
@@ -34,6 +33,5 @@ namespace SmallShopWeb.Catalog.App.Services
 
             return Task.FromResult(listReply);
         }
-
     }
 }
