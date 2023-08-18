@@ -1,45 +1,9 @@
-//using Microsoft.EntityFrameworkCore;
-//using SmallShopWeb.Catalog.App;
-//using SmallShopWeb.Catalog.Infrastructure;
-
-//var builder = WebApplication.CreateBuilder(args);
-
-//// Add services to the container.
-
-//builder.Services.AddControllers();
-
-//var connectionString = builder.Configuration.GetConnectionString("Default")
-//    ?? throw new NullReferenceException("Cannot get connection string");
-//builder.Services.AddDbContextFactory<ApplicationDbContext>(opt => opt.UseNpgsql(connectionString));
-//builder.Services.AddCustomServices();
-
-//var app = builder.Build();
-
-//// Configure the HTTP request pipeline.
-//// todo: turn on https (check launchSettings.json)
-////app.UseHttpsRedirection();
-
-//app.UseAuthorization();
-
-//app.MapControllers();
-
-//app.Run();
-
-
-using Microsoft.EntityFrameworkCore;
 using SmallShopWeb.Catalog.App;
-using SmallShopWeb.Catalog.Infrastructure;
-using SmallShopWeb.Catalog.Services;
+using SmallShopWeb.Catalog.App.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddCustomServices(builder.Configuration);
 
-var connectionString = builder.Configuration.GetConnectionString("Default")
-    ?? throw new NullReferenceException("Cannot get connection string");
-builder.Services.AddDbContextFactory<ApplicationDbContext>(opt => opt.UseNpgsql(connectionString));
-builder.Services.AddCustomServices();
-
-// Additional configuration is required to successfully run gRPC on macOS.
-// For instructions on how to configure Kestrel and gRPC clients on macOS, visit https://go.microsoft.com/fwlink/?linkid=2099682
 // Add services to the container.
 builder.Services.AddGrpc();
 

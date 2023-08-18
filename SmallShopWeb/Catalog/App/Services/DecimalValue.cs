@@ -1,4 +1,4 @@
-﻿namespace SmallShopWeb.Catalog.Protos
+﻿namespace SmallShopWeb.Catalog.App.Services
 {
     public partial class DecimalValue
     {
