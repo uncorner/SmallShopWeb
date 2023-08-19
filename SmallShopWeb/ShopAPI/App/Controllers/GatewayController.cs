@@ -2,6 +2,7 @@
 using SmallShopWeb.ShopAPI.Infrastructure.Client;
 using SmallShopWeb.ShopCommon.Dto;
 using Google.Protobuf.WellKnownTypes;
+using System.Net;
 
 namespace SmallShopWeb.ShopAPI.App.Controllers
 {
@@ -10,10 +11,12 @@ namespace SmallShopWeb.ShopAPI.App.Controllers
     public class GatewayController : ControllerBase
     {
         private readonly ProductCatalog.ProductCatalogClient catalogClient;
+        private readonly ILogger<GatewayController> logger;
 
-        public GatewayController(ProductCatalog.ProductCatalogClient catalogClient)
+        public GatewayController(ProductCatalog.ProductCatalogClient catalogClient, ILogger<GatewayController> logger)
         {
             this.catalogClient = catalogClient;
+            this.logger = logger;
         }
 
         [HttpGet("info")]
@@ -25,13 +28,19 @@ namespace SmallShopWeb.ShopAPI.App.Controllers
         [HttpGet("product/list")]
         public async Task<IActionResult> GetProducts()
         {
-            //TODO: use try catch
-            var listReply = await catalogClient.GetProductsAsync(new Empty());
+            try {
+                var listReply = await catalogClient.GetProductsAsync(new Empty());
 
-            var productInfos = listReply.Products.Select(p =>
-                new ProductInfo(p.Id, p.Name, p.Description, p.Price)).ToArray();
+                var productInfos = listReply.Products.Select(p =>
+                    new ProductInfo(p.Id, p.Name, p.Description, p.Price)).ToArray();
 
-            return Ok(productInfos);
+                return Ok(productInfos);
+            }
+            catch (Exception ex)
+            {
+                logger.LogCritical(ex.Message);
+                return StatusCode((int)HttpStatusCode.InternalServerError, "Something went wrong");
+            }
         }
 
     }
