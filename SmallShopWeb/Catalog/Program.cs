@@ -1,4 +1,4 @@
-using SmallShopWeb.Catalog.App;
+using SmallShopWeb.Catalog.Infrastructure;
 using SmallShopWeb.Catalog.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);

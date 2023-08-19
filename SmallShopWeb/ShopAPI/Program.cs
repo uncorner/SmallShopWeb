@@ -1,4 +1,4 @@
-using SmallShopWeb.ShopAPI.App;
+using SmallShopWeb.ShopAPI.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 

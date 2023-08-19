@@ -1,6 +1,7 @@
-﻿using SmallShopWeb.ShopAPI.Infrastructure.Client;
+﻿using SmallShopWeb.ShopAPI.App.Client;
+using SmallShopWeb.ShopAPI.Infrastructure.Client;
 
-namespace SmallShopWeb.ShopAPI.App
+namespace SmallShopWeb.ShopAPI.Infrastructure
 {
     internal static class ServiceProviderExtensions
     {
@@ -10,6 +11,8 @@ namespace SmallShopWeb.ShopAPI.App
                 {
                     opt.Address = new Uri("https://localhost:7240");
                 });
+
+            services.AddTransient<IProductCatalogClient, ProductCatalogClient>();
         }
     }
 }

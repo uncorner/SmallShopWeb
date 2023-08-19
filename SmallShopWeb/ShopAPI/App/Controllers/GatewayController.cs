@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SmallShopWeb.ShopAPI.Infrastructure.Client;
 using SmallShopWeb.ShopCommon.Dto;
-using Google.Protobuf.WellKnownTypes;
 using System.Net;
+using SmallShopWeb.ShopAPI.App.Client;
 
 namespace SmallShopWeb.ShopAPI.App.Controllers
 {
@@ -10,10 +9,10 @@ namespace SmallShopWeb.ShopAPI.App.Controllers
     [ApiController]
     public class GatewayController : ControllerBase
     {
-        private readonly ProductCatalog.ProductCatalogClient catalogClient;
+        private readonly IProductCatalogClient catalogClient;
         private readonly ILogger<GatewayController> logger;
 
-        public GatewayController(ProductCatalog.ProductCatalogClient catalogClient, ILogger<GatewayController> logger)
+        public GatewayController(IProductCatalogClient catalogClient, ILogger<GatewayController> logger)
         {
             this.catalogClient = catalogClient;
             this.logger = logger;
@@ -29,7 +28,7 @@ namespace SmallShopWeb.ShopAPI.App.Controllers
         public async Task<IActionResult> GetProducts()
         {
             try {
-                var listReply = await catalogClient.GetProductsAsync(new Empty());
+                var listReply = await catalogClient.GetProductsAsync();
 
                 var productInfos = listReply.Products.Select(p =>
                     new ProductInfo(p.Id, p.Name, p.Description, p.Price)).ToArray();
