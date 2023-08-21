@@ -31,7 +31,7 @@ namespace SmallShopWeb.Catalog.App.Services
             ProductListReply listReply = new();
             listReply.Products.AddRange(productReplyList);
 
-            return await Task.FromResult(listReply);
+            return listReply;
         }
     }
 }
