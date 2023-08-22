@@ -5,9 +5,11 @@ option csharp_namespace = "SmallShopWeb.Catalog.App.Services";
 package catalog;
 
 import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
 
 service ProductCatalog {
     rpc GetProducts (google.protobuf.Empty) returns (ProductListReply);
+    rpc CreateProducts (CreateProductsRequest) returns (CreateProductsReply); 
 }
 
 message ProductListReply {
@@ -17,8 +19,22 @@ message ProductListReply {
 message ProductReply {
     int32 id = 1;
     string name = 2;
-    string Description = 3;
+    string description = 3;
     DecimalValue price = 4;
+}
+
+message CreateProductData {
+    string name = 1;
+    google.protobuf.StringValue description = 2;
+    DecimalValue price = 3;
+}
+
+message CreateProductsRequest {
+    repeated CreateProductData datas = 1;
+}
+
+message CreateProductsReply {
+    repeated int32 ids = 1;
 }
 
 // Example: 12345.6789 -> { units = 12345, nanos = 678900000 }

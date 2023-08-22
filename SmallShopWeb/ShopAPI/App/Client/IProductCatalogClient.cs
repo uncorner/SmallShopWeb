@@ -5,6 +5,6 @@ namespace SmallShopWeb.ShopAPI.App.Client
     public interface IProductCatalogClient
     {
         Task<ProductListReply> GetProductsAsync();
-
+        Task<CreateProductsReply> CreateProducts(CreateProductsRequest request);
     }
 }

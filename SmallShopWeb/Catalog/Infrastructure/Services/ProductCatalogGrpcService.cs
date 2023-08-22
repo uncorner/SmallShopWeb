@@ -13,9 +13,14 @@ namespace SmallShopWeb.Catalog.Infrastructure.Services
             this.service = service;
         }
 
-        public async override Task<ProductListReply> GetProducts(Empty request, ServerCallContext context)
+        public override async Task<ProductListReply> GetProducts(Empty request, ServerCallContext context)
         {
             return await service.GetProducts(context);
+        }
+
+        public override async Task<CreateProductsReply> CreateProducts(CreateProductsRequest request, ServerCallContext context)
+        {
+            return await service.CreateProducts(request, context);
         }
 
     }
