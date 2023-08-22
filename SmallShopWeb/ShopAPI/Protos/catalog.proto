@@ -10,16 +10,17 @@ import "google/protobuf/wrappers.proto";
 service ProductCatalog {
     rpc GetProducts (google.protobuf.Empty) returns (ProductListReply);
     rpc CreateProducts (CreateProductsRequest) returns (CreateProductsReply); 
+    rpc UpdateProducts (UpdateProductsRequest) returns (google.protobuf.Empty);
 }
 
 message ProductListReply {
-    repeated ProductReply products = 1;
+    repeated ProductData products = 1;
 }
 
-message ProductReply {
+message ProductData {
     int32 id = 1;
     string name = 2;
-    string description = 3;
+    google.protobuf.StringValue description = 3;
     DecimalValue price = 4;
 }
 
@@ -35,6 +36,17 @@ message CreateProductsRequest {
 
 message CreateProductsReply {
     repeated int32 ids = 1;
+}
+
+message UpdateProductsRequest {
+    repeated UpdateProductData datas = 1;
+}
+
+message UpdateProductData {
+    int32 id = 1;
+    string name = 2;
+    google.protobuf.StringValue description = 3;
+    DecimalValue price = 4;
 }
 
 // Example: 12345.6789 -> { units = 12345, nanos = 678900000 }

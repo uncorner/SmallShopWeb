@@ -17,9 +17,14 @@ namespace SmallShopWeb.ShopAPI.Infrastructure.Client
             return await client.GetProductsAsync(new Empty());
         }
 
-        public async Task<CreateProductsReply> CreateProducts(CreateProductsRequest request)
+        public async Task<CreateProductsReply> CreateProductsAsync(CreateProductsRequest request)
         {
             return await client.CreateProductsAsync(request);
+        }
+
+        public async Task<Empty> UpdateProductsAsync(UpdateProductsRequest request)
+        {
+            return await client.UpdateProductsAsync(request);
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using Grpc.Core;
+﻿using Google.Protobuf.WellKnownTypes;
+using Grpc.Core;
 using SmallShopWeb.Catalog.App.Entities;
 using SmallShopWeb.Catalog.App.Repository;
 
@@ -21,7 +22,7 @@ namespace SmallShopWeb.Catalog.App.Services
             var products = await productRepository.GetAllAsync();
 
             var productReplyList = products.Select(p =>
-                new ProductReply()
+                new ProductData()
                 {
                     Id = p.Id,
                     Description = p.Description,
@@ -56,24 +57,32 @@ namespace SmallShopWeb.Catalog.App.Services
             return result;
         }
 
-        //        [HttpPost("products")]
-        //        public async Task<IActionResult> CreateProducts([FromBody] CreateProductData[] datas)
-        //        {
-        //            using var unitOfWork = unitOfWorkFactory.CreateUnitOfWork();
-        //            var productRepository = unitOfWork.CreateProductRepository();
+        public async Task<Empty> UpdateProducts(UpdateProductsRequest request, ServerCallContext context)
+        {
+            using var unitOfWork = unitOfWorkFactory.CreateUnitOfWork();
+            var productRepository = unitOfWork.CreateProductRepository();
 
-        //            var products = datas.Select(i => new Product(i.Name)
-        //            {
-        //                Description = i.Description,
-        //                Price = i.Price
-        //            }).ToArray();
+            var ids = request.Datas.Select(i => i.Id).ToArray();
+            var products = await productRepository.GetByIdsAsync(ids);
+            var productsMap = products.ToDictionary(i => i.Id);
 
-        //            await productRepository.AddRange(products);
-        //            await unitOfWork.SaveChangesAsync();
+            foreach(var data in request.Datas)
+            {
+                if (productsMap.TryGetValue(data.Id, out Product? product))
+                {
+                    product.Name = data.Name;
+                    product.Description = data.Description;
+                    product.Price = data.Price;
+                }
+                else
+                {
+                    throw new RpcException(new Status(StatusCode.NotFound, $"Product with id {data.Id} is not found"));
+                }
+            }
 
-        //            var ids = products.Select(i => i.Id).ToArray();
-        //            return Ok(ids);
-        //        }
+            await unitOfWork.SaveChangesAsync();
+            return new Empty();
+        }
 
 
     }
