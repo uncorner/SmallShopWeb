@@ -24,7 +24,7 @@ namespace SmallShopWeb.Catalog.Infrastructure.Repository
         }
 
         public async Task<IEnumerable<Product>> GetAllAsync() =>
-            await dbContext.Products.ToArrayAsync();
+            await dbContext.Products.OrderBy(i => i.Id).ToArrayAsync();
 
         public async Task<IEnumerable<Product>> GetByIdsAsync(IEnumerable<int> ids)
         {
