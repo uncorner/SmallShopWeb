@@ -102,7 +102,30 @@ namespace SmallShopWeb.ShopAPI.App.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, "Something went wrong");
             }
         }
-            
+
+        [HttpDelete("products")]
+        public async Task<IActionResult> RemoveProducts([FromBody] int[] productIds)
+        {
+            try
+            {
+                var request = new RemoveProductsRequest();
+                request.Ids.AddRange(productIds);
+
+                var result = await catalogClient.RemoveProductsAsync(request);
+                return Ok();
+            }
+            catch (RpcException ex) when (ex.StatusCode == Grpc.Core.StatusCode.NotFound)
+            {
+                logger.LogError(ex.Message);
+                return StatusCode((int)HttpStatusCode.NotFound, ex.Status.Detail);
+            }
+            catch (Exception ex)
+            {
+                logger.LogCritical(ex.Message);
+                return StatusCode((int)HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
 
     }
 }

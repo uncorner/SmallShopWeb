@@ -27,5 +27,10 @@ namespace SmallShopWeb.ShopAPI.Infrastructure.Client
             return await client.UpdateProductsAsync(request);
         }
 
+        public async Task<Empty> RemoveProductsAsync(RemoveProductsRequest request)
+        {
+            return await client.RemoveProductsAsync(request);
+        }
+
     }
 }

@@ -76,13 +76,39 @@ namespace SmallShopWeb.Catalog.App.Services
                 }
                 else
                 {
-                    throw new RpcException(new Status(StatusCode.NotFound, $"Product with id {data.Id} is not found"));
+                    throw ProductNotFound(data.Id);
                 }
             }
 
             await unitOfWork.SaveChangesAsync();
             return new Empty();
         }
+
+        public async Task<Empty> RemoveProducts(RemoveProductsRequest request, ServerCallContext context)
+        {
+            var productIds = request.Ids.Distinct().ToArray();
+
+            using var unitOfWork = unitOfWorkFactory.CreateUnitOfWork();
+            var productRepository = unitOfWork.CreateProductRepository();
+            var existedIds = await productRepository.CheckProductsExistAsync(productIds);
+
+            if (productIds.Length != existedIds.Count())
+            {
+                foreach (var id in productIds)
+                {
+                    if (!existedIds.Contains(id))
+                    {
+                        throw ProductNotFound(id);
+                    }
+                }
+            }
+
+            await productRepository.BatchRemoveAsync(productIds);
+            return new Empty();
+        }
+
+        private static RpcException ProductNotFound(int id) =>
+            new RpcException(new Status(StatusCode.NotFound, $"Product with id {id} is not found"));
 
 
     }

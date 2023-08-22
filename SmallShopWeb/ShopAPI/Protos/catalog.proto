@@ -11,6 +11,7 @@ service ProductCatalog {
     rpc GetProducts (google.protobuf.Empty) returns (ProductListReply);
     rpc CreateProducts (CreateProductsRequest) returns (CreateProductsReply); 
     rpc UpdateProducts (UpdateProductsRequest) returns (google.protobuf.Empty);
+    rpc RemoveProducts (RemoveProductsRequest) returns (google.protobuf.Empty);
 }
 
 message ProductListReply {
@@ -47,6 +48,10 @@ message UpdateProductData {
     string name = 2;
     google.protobuf.StringValue description = 3;
     DecimalValue price = 4;
+}
+
+message RemoveProductsRequest {
+    repeated int32 ids = 1;
 }
 
 // Example: 12345.6789 -> { units = 12345, nanos = 678900000 }

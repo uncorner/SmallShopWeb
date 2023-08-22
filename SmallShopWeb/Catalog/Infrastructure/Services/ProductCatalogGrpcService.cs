@@ -28,5 +28,10 @@ namespace SmallShopWeb.Catalog.Infrastructure.Services
             return await service.UpdateProducts(request, context);
         }
 
+        public override async Task<Empty> RemoveProducts(RemoveProductsRequest request, ServerCallContext context)
+        {
+            return await service.RemoveProducts(request, context);
+        }
+
     }
 }
