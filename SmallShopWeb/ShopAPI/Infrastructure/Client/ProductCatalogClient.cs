@@ -5,31 +5,31 @@ namespace SmallShopWeb.ShopAPI.Infrastructure.Client
 {
     internal class ProductCatalogClient : IProductCatalogClient
     {
-        private readonly ProductCatalog.ProductCatalogClient client;
+        private readonly ProductCatalog.ProductCatalogClient grpcClient;
 
-        public ProductCatalogClient(ProductCatalog.ProductCatalogClient client)
+        public ProductCatalogClient(ProductCatalog.ProductCatalogClient grpcClient)
         {
-            this.client = client;
+            this.grpcClient = grpcClient;
         }
 
         public async Task<ProductListReply> GetProductsAsync()
         {
-            return await client.GetProductsAsync(new Empty());
+            return await grpcClient.GetProductsAsync(new Empty());
         }
 
         public async Task<CreateProductsReply> CreateProductsAsync(CreateProductsRequest request)
         {
-            return await client.CreateProductsAsync(request);
+            return await grpcClient.CreateProductsAsync(request);
         }
 
         public async Task<Empty> UpdateProductsAsync(UpdateProductsRequest request)
         {
-            return await client.UpdateProductsAsync(request);
+            return await grpcClient.UpdateProductsAsync(request);
         }
 
         public async Task<Empty> RemoveProductsAsync(RemoveProductsRequest request)
         {
-            return await client.RemoveProductsAsync(request);
+            return await grpcClient.RemoveProductsAsync(request);
         }
 
     }
