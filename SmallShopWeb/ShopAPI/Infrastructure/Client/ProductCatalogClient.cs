@@ -12,24 +12,24 @@ namespace SmallShopWeb.ShopAPI.Infrastructure.Client
             this.grpcClient = grpcClient;
         }
 
-        public async Task<ProductListReply> GetProductsAsync()
+        public Task<ProductListReply> GetProductsAsync()
         {
-            return await grpcClient.GetProductsAsync(new Empty());
+            return grpcClient.GetProductsAsync(new Empty()).ResponseAsync;
         }
 
-        public async Task<CreateProductsReply> CreateProductsAsync(CreateProductsRequest request)
+        public Task<CreateProductsReply> CreateProductsAsync(CreateProductsRequest request)
         {
-            return await grpcClient.CreateProductsAsync(request);
+            return grpcClient.CreateProductsAsync(request).ResponseAsync;
         }
 
-        public async Task<Empty> UpdateProductsAsync(UpdateProductsRequest request)
+        public Task<Empty> UpdateProductsAsync(UpdateProductsRequest request)
         {
-            return await grpcClient.UpdateProductsAsync(request);
+            return grpcClient.UpdateProductsAsync(request).ResponseAsync;
         }
 
-        public async Task<Empty> RemoveProductsAsync(RemoveProductsRequest request)
+        public Task<Empty> RemoveProductsAsync(RemoveProductsRequest request)
         {
-            return await grpcClient.RemoveProductsAsync(request);
+            return grpcClient.RemoveProductsAsync(request).ResponseAsync;
         }
 
     }
