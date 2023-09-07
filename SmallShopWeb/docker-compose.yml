@@ -1,0 +1,14 @@
+version: '3'
+services:
+  smallshop-catalog-api-app:
+    container_name: smallshop-catalog-api
+    build:
+      context: .
+      dockerfile: Catalog\Dockerfile
+    ports:
+      - "5000:80"
+    networks:
+      - smallshop-network
+networks:
+  smallshop-network:
+    driver: bridge
