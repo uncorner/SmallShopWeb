@@ -1,7 +1,7 @@
 version: '3'
 services:
-  smallshop-catalog-api-app:
-    container_name: smallshop-catalog-api
+  catalog-api-app:
+    container_name: catalog-api
     build:
       context: .
       dockerfile: Catalog\Dockerfile
