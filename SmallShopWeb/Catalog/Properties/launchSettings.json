@@ -1,5 +1,13 @@
 {
   "profiles": {
+    "http": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:5267;http://localhost:7240"
+    },
     "https": {
       "commandName": "Project",
       "environmentVariables": {
@@ -7,14 +15,6 @@
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7240;http://localhost:5267"
-    },
-    "http": {
-      "commandName": "Project",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5267"
     },
     "Docker": {
       "commandName": "Docker",

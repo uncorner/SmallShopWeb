@@ -9,7 +9,7 @@ namespace SmallShopWeb.ShopAPI.Infrastructure
         {
             services.AddGrpcClient<ProductCatalog.ProductCatalogClient>(opt =>
                 {
-                    opt.Address = new Uri("https://localhost:7240");
+                    opt.Address = new Uri("http://localhost:7240");
                 });
 
             services.AddTransient<IProductCatalogClient, ProductCatalogClient>();
