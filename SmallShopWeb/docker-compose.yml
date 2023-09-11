@@ -1,14 +1,47 @@
 version: '3'
 services:
+  shop-api-app:
+    container_name: shop-api
+    build:
+      context: .
+      dockerfile: ShopAPI\Dockerfile
+    environment: 
+      - ASPNETCORE_ENVIRONMENT=DockerDev
+    ports:
+      - "5194:80"
+    networks:
+      - smallshop-network
+    depends_on:
+      - catalog-api-app
   catalog-api-app:
     container_name: catalog-api
     build:
       context: .
       dockerfile: Catalog\Dockerfile
+    environment: 
+      - ASPNETCORE_ENVIRONMENT=DockerDev
     ports:
-      - "5000:80"
+      - "5267:5267"
+      - "7240:7240"
     networks:
       - smallshop-network
+    depends_on:
+      - catalog-postgres-db
+  catalog-postgres-db:
+    container_name: postgres
+    image: postgres:15.4
+    environment:
+      POSTGRES_USER: uncorner
+      POSTGRES_PASSWORD: qwerty123
+      POSTGRES_DB: small_shop_catalog
+    ports:
+      - "5432:5432"
+    networks:
+      - smallshop-network
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
 networks:
   smallshop-network:
     driver: bridge
+volumes:
+  postgres-data:
