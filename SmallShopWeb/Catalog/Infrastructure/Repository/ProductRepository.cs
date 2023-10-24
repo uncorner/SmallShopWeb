@@ -13,34 +13,35 @@ namespace SmallShopWeb.Catalog.Infrastructure.Repository
             this.dbContext = dbContext;
         }
 
-        public async Task AddAsync(Product product)
+        public Task AddAsync(Product product)
         {
-            await dbContext.Products.AddAsync(product);
+            return dbContext.Products.AddAsync(product).AsTask();
         }
 
-        public async Task AddRangeAsync(IEnumerable<Product> products)
+        public Task AddRangeAsync(IEnumerable<Product> products)
         {
-            await dbContext.AddRangeAsync(products);
+            return dbContext.Products.AddRangeAsync(products);
         }
 
-        public async Task<IEnumerable<Product>> GetAllAsync() =>
-            await dbContext.Products.OrderBy(i => i.Id).ToArrayAsync();
+        public Task<Product[]> GetAllAsync() =>
+            dbContext.Products.OrderBy(i => i.Id).ToArrayAsync();
+            //.ToArrayAsync();
 
-        public async Task<IEnumerable<Product>> GetByIdsAsync(IEnumerable<int> ids)
+        public Task<Product[]> GetByIdsAsync(IEnumerable<int> ids)
         {
-            return await dbContext.Products.Where(i => ids.Contains(i.Id)).ToArrayAsync()
-                ?? Array.Empty<Product>();
+            return dbContext.Products.Where(i => ids.Contains(i.Id)).ToArrayAsync();
+                //?? Array.Empty<Product>();
         }
 
-        public async Task<IEnumerable<int>> CheckProductsExistAsync(IEnumerable<int> ids)
+        public Task<int[]> CheckProductsExistAsync(IEnumerable<int> ids)
         {
-            return await dbContext.Products.Where(i => ids.Contains(i.Id))
+            return dbContext.Products.Where(i => ids.Contains(i.Id))
                 .Select(i => i.Id).ToArrayAsync();
         }
 
-        public async Task BatchRemoveAsync(IEnumerable<int> ids)
+        public Task BatchRemoveAsync(IEnumerable<int> ids)
         {
-            await dbContext.Products.Where(i => ids.Contains(i.Id)).ExecuteDeleteAsync();
+            return dbContext.Products.Where(i => ids.Contains(i.Id)).ExecuteDeleteAsync();
         }
 
     }
