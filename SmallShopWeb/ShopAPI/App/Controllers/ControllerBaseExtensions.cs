@@ -6,26 +6,27 @@ namespace SmallShopWeb.ShopAPI.App.Controllers
 {
     internal static class ControllerBaseExtensions
     {
-        public static async Task<IActionResult> HandleErrors(this ControllerBase controller,
+        public static Task<IActionResult> HandleErrors(this ControllerBase controller,
             ILogger logger,
             Func<Task<IActionResult>> processRequest)
         {
             try
             {
-                return await processRequest();
+                return processRequest();
             }
             catch (RpcException ex) when (ex.StatusCode == StatusCode.NotFound)
             {
                 logger.LogError(ex.Message);
-                return controller.StatusCode((int)HttpStatusCode.NotFound, ex.Status.Detail);
+                IActionResult result = controller.StatusCode((int)HttpStatusCode.NotFound, ex.Status.Detail);
+                return Task.FromResult(result);
             }
             catch (Exception ex)
             {
                 logger.LogCritical(ex.Message);
-                return controller.StatusCode((int)HttpStatusCode.InternalServerError, "Something went wrong");
+                IActionResult result = controller.StatusCode((int)HttpStatusCode.InternalServerError, "Something went wrong");
+                return Task.FromResult(result);
             }
         }
-        
 
     }
 }

@@ -20,9 +20,9 @@ namespace SmallShopWeb.ShopAPI.App.Controllers
         }
 
         [HttpGet("products")]
-        public async Task<IActionResult> GetProducts()
+        public Task<IActionResult> GetProducts()
         {
-            return await this.HandleErrors(logger, async () =>
+            return this.HandleErrors(logger, async () =>
             {
                 var listReply = await catalogClient.GetProductsAsync();
 
@@ -32,11 +32,11 @@ namespace SmallShopWeb.ShopAPI.App.Controllers
                 return Ok(productInfos);
             });
         }
-
+        
         [HttpPost("products")]
-        public async Task<IActionResult> CreateProducts([FromBody] CreateProductData[] datas)
+        public Task<IActionResult> CreateProducts([FromBody] CreateProductData[] datas)
         {
-            return await this.HandleErrors(logger, async () =>
+            return this.HandleErrors(logger, async () =>
             {
                 var productDatas = datas.Select(i => new Client.CreateProductData()
                 {
@@ -53,11 +53,11 @@ namespace SmallShopWeb.ShopAPI.App.Controllers
                 return Ok(result.Ids.ToArray());
             });
         }
-
+        
         [HttpPut("products")]
-        public async Task<IActionResult> UpdateProducts([FromBody] UpdateProductData[] datas)
+        public Task<IActionResult> UpdateProducts([FromBody] UpdateProductData[] datas)
         {
-            return await this.HandleErrors(logger,async () =>
+            return this.HandleErrors(logger,async () =>
             {
                 var productDatas = datas.Select(i => new Client.UpdateProductData()
                 {
@@ -77,9 +77,9 @@ namespace SmallShopWeb.ShopAPI.App.Controllers
         }
 
         [HttpDelete("products")]
-        public async Task<IActionResult> RemoveProducts([FromBody] int[] productIds)
+        public Task<IActionResult> RemoveProducts([FromBody] int[] productIds)
         {
-            return await this.HandleErrors(logger, async () =>
+            return this.HandleErrors(logger, async () =>
             {
                 var request = new RemoveProductsRequest();
                 request.Ids.AddRange(productIds);
@@ -88,7 +88,6 @@ namespace SmallShopWeb.ShopAPI.App.Controllers
                 return Ok();
             });
         }
-        
 
     }
 }
