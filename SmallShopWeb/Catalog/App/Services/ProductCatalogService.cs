@@ -16,10 +16,12 @@ namespace SmallShopWeb.Catalog.App.Services
 
         public async Task<ProductListReply> GetProducts(ServerCallContext context)
         {
-            using var unitOfWork = unitOfWorkFactory.CreateUnitOfWork();
-            var productRepository = unitOfWork.CreateProductRepository();
-
-            var products = await productRepository.GetAllAsync();
+            IEnumerable<Product> products = Array.Empty<Product>();
+            await using (var unitOfWork = unitOfWorkFactory.CreateUnitOfWork())
+            {
+                var productRepository = unitOfWork.CreateProductRepository();
+                products = await productRepository.GetAllAsync();
+            }
 
             var productReplyList = products.Select(p =>
                 new ProductData()
@@ -38,7 +40,7 @@ namespace SmallShopWeb.Catalog.App.Services
 
         public async Task<CreateProductsReply> CreateProducts(CreateProductsRequest request, ServerCallContext context)
         {
-            using var unitOfWork = unitOfWorkFactory.CreateUnitOfWork();
+            await using var unitOfWork = unitOfWorkFactory.CreateUnitOfWork();
             var productRepository = unitOfWork.CreateProductRepository();
 
             var products = request.Datas.Select(i => new Product(i.Name)
@@ -59,7 +61,7 @@ namespace SmallShopWeb.Catalog.App.Services
 
         public async Task<Empty> UpdateProducts(UpdateProductsRequest request, ServerCallContext context)
         {
-            using var unitOfWork = unitOfWorkFactory.CreateUnitOfWork();
+            await using var unitOfWork = unitOfWorkFactory.CreateUnitOfWork();
             var productRepository = unitOfWork.CreateProductRepository();
 
             var ids = request.Datas.Select(i => i.Id).ToArray();
@@ -88,7 +90,7 @@ namespace SmallShopWeb.Catalog.App.Services
         {
             var productIds = request.Ids.Distinct().ToArray();
 
-            using var unitOfWork = unitOfWorkFactory.CreateUnitOfWork();
+            await using var unitOfWork = unitOfWorkFactory.CreateUnitOfWork();
             var productRepository = unitOfWork.CreateProductRepository();
             var existedIds = await productRepository.CheckProductsExistAsync(productIds);
 

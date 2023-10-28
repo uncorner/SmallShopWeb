@@ -2,7 +2,7 @@
 
 namespace SmallShopWeb.Catalog.Infrastructure.Repository
 {
-    class UnitOfWork : IUnitOfWork
+    sealed class UnitOfWork : IUnitOfWork
     {
         private readonly ApplicationDbContext dbContext;
 
