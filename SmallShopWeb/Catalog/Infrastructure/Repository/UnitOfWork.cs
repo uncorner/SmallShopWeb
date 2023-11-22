@@ -2,7 +2,7 @@
 
 namespace SmallShopWeb.Catalog.Infrastructure.Repository
 {
-    class UnitOfWork : IUnitOfWork
+    sealed class UnitOfWork : IUnitOfWork
     {
         private readonly ApplicationDbContext dbContext;
 
@@ -28,12 +28,12 @@ namespace SmallShopWeb.Catalog.Infrastructure.Repository
             return await dbContext.SaveChangesAsync();
         }
 
-        #region Disposable
+        #region IDisposable, IAsyncDisposable
         public void Dispose()
         {
             dbContext.Dispose();
         }
-
+        
         public async ValueTask DisposeAsync()
         {
             await dbContext.DisposeAsync();
