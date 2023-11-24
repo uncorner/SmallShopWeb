@@ -4,6 +4,6 @@ namespace SmallShopWeb.ShopWeb.Presentation.Models;
 
 public class ProductListModel
 {
-    public IEnumerable<ProductInfo> Produts { get; set; } = Array.Empty<ProductInfo>(); 
+    public IEnumerable<ProductInfo> Products { get; set; } = Array.Empty<ProductInfo>(); 
 
 }

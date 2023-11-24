@@ -5,8 +5,10 @@
 
 <h3>Product list</h3>
 
-@foreach(var product in Model.Produts)
+@foreach (var product in Model.Products)
 {
-    <p>@product.Name</p>
-    
+    <h4>@product.Name</h4>
+    <p>@product.Description</p>
+    <p>@product.Price.ToString()</p>
+    <br/>
 }

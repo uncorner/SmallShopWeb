@@ -17,10 +17,9 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        //>>>>>>>>>
         var result = await apiClient.GetProductsAsync();
         IEnumerable<ProductInfo> products = result ?? Array.Empty<ProductInfo>();
-        ProductListModel model = new() { Produts = products };
+        ProductListModel model = new() { Products = products };
 
         return View(model);
     }
