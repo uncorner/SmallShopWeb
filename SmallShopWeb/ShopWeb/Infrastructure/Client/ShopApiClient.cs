@@ -1,19 +1,17 @@
 ﻿using ShopWeb.App.Client;
 using SmallShopWeb.ShopCommon.Dto;
+using SmallShopWeb.ShopWeb.App;
 
 namespace ShopWeb.Infrastructure.Client;
 
 class ShopApiClient : IShopApiClient
 {
-    // TODO in config settings host
-    private const string BaseAddr = "http://localhost:5194";
     private readonly HttpClient httpClient;
 
-    public ShopApiClient(HttpClient httpClient)
+    public ShopApiClient(HttpClient httpClient, IConfiguration config)
     {
         this.httpClient = httpClient;
-        // todo: https
-        this.httpClient.BaseAddress = new Uri(BaseAddr);
+        this.httpClient.BaseAddress = new Uri(config.GetShopApiServiceUrl());
     }
 
     public async Task<IEnumerable<ProductInfo>?> GetProductsAsync()
