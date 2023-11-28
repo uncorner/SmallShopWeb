@@ -1,5 +1,18 @@
-version: '3'
+version: '3.4'
 services:
+  shop-web-app:
+    container_name: shop-web
+    build:
+      context: .
+      dockerfile: ShopWeb\Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=DockerDev
+    ports:
+      - "5125:80"
+    networks:
+      - smallshop-network
+    depends_on:
+      - shop-api-app
   shop-api-app:
     container_name: shop-api
     build:
