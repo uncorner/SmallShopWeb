@@ -3,7 +3,7 @@
     "http": {
       "commandName": "Project",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "DevelopmentNoSSL"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5267;http://localhost:7240"

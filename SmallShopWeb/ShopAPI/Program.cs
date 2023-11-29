@@ -1,4 +1,5 @@
 using SmallShopWeb.ShopAPI.Infrastructure;
+using SmallShopWeb.ShopCommon.App;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,9 +12,12 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 // turn on https on production
-//app.UseHttpsRedirection();
+if (!app.Environment.IsDevelopmentNoSSL())
+{
+    app.UseHttpsRedirection();
+}
 
-app.UseAuthorization();
+//app.UseAuthorization();
 
 app.MapControllers();
 

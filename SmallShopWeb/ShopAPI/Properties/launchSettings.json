@@ -5,12 +5,12 @@
       "launchBrowser": true,
       "launchUrl": "api/products",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "DevelopmentNoSSL"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5194"
     },
-    "//EXCLUDED https": {
+    "https": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/products",
