@@ -1,6 +1,6 @@
 ﻿using SmallShopWeb.Catalog.Domain.Entities;
 
-namespace SmallShopWeb.Catalog.App.Repository
+namespace SmallShopWeb.Catalog.Application.Repository
 {
     public interface IProductRepository
     {

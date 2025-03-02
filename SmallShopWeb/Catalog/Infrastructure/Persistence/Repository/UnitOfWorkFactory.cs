@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SmallShopWeb.Catalog.App.Repository;
+using SmallShopWeb.Catalog.Application.Repository;
 
-namespace SmallShopWeb.Catalog.Infrastructure.Repository
+namespace SmallShopWeb.Catalog.Infrastructure.Persistence.Repository
 {
     class UnitOfWorkFactory : IUnitOfWorkFactory
     {

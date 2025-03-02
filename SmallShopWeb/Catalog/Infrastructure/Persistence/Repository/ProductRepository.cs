@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SmallShopWeb.Catalog.App.Repository;
+using SmallShopWeb.Catalog.Application.Repository;
 using SmallShopWeb.Catalog.Domain.Entities;
 
-namespace SmallShopWeb.Catalog.Infrastructure.Repository
+namespace SmallShopWeb.Catalog.Infrastructure.Persistence.Repository
 {
     internal class ProductRepository : IProductRepository
     {

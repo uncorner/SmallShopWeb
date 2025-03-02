@@ -1,4 +1,4 @@
-﻿namespace SmallShopWeb.Catalog.App.Repository
+﻿namespace SmallShopWeb.Catalog.Application.Repository
 {
     public interface IUnitOfWorkFactory
     {

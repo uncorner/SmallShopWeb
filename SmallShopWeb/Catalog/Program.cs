@@ -1,5 +1,5 @@
-using SmallShopWeb.Catalog.Infrastructure;
 using SmallShopWeb.Catalog.Presentation.GrpcService;
+using SmallShopWeb.Catalog.Util;
 
 var builder = WebApplication.CreateBuilder(args);
 

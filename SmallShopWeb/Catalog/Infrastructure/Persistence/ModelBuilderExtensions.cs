@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmallShopWeb.Catalog.Domain.Entities;
 
-namespace SmallShopWeb.Catalog.Infrastructure
+namespace SmallShopWeb.Catalog.Infrastructure.Persistence
 {
     public static class ModelBuilderExtensions
     {

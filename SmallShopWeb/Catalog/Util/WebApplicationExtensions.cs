@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SmallShopWeb.Catalog.Infrastructure.Persistence;
 
-namespace SmallShopWeb.Catalog.Infrastructure
+namespace SmallShopWeb.Catalog.Util
 {
     internal static class WebApplicationExtensions
     {

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SmallShopWeb.Catalog.Infrastructure;
+using SmallShopWeb.Catalog.Infrastructure.Persistence;
 
 #nullable disable
 
