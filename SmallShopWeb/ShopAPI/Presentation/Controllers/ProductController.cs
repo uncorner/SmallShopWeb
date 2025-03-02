@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SmallShopWeb.ShopAPI.Application.CatalogClient;
 using SmallShopWeb.ShopCommon.Dto;
-using CreateProductData = SmallShopWeb.ShopAPI.Application.Dto.CreateProductData;
-using UpdateProductData = SmallShopWeb.ShopAPI.Application.Dto.UpdateProductData;
+using CreateProductData = SmallShopWeb.ShopAPI.Presentation.Models.CreateProductData;
+using UpdateProductData = SmallShopWeb.ShopAPI.Presentation.Models.UpdateProductData;
 
 namespace SmallShopWeb.ShopAPI.Presentation.Controllers
 {

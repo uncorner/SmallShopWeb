@@ -1,4 +1,4 @@
-﻿namespace SmallShopWeb.ShopAPI.Application.Dto
+﻿namespace SmallShopWeb.ShopAPI.Presentation.Models
 {
 
     public record CreateProductData(string Name, string? Description, decimal Price);
