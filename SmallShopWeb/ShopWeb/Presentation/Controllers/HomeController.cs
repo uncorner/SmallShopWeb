@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using ShopWeb.App.Client;
+﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
 using SmallShopWeb.ShopCommon.Dto;
+using SmallShopWeb.ShopWeb.Application.Client;
 using SmallShopWeb.ShopWeb.Presentation.Models;
-using System.Diagnostics;
 
-namespace SmallShopWeb.ShopWeb.Controllers;
+namespace SmallShopWeb.ShopWeb.Presentation.Controllers;
 
 public class HomeController : Controller
 {

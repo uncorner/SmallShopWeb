@@ -1,5 +1,5 @@
 using SmallShopWeb.ShopAPI.Util;
-using SmallShopWeb.ShopCommon.App;
+using SmallShopWeb.ShopCommon.Util;
 
 var builder = WebApplication.CreateBuilder(args);
 

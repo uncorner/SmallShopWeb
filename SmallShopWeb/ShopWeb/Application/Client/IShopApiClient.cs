@@ -1,6 +1,6 @@
 ﻿using SmallShopWeb.ShopCommon.Dto;
 
-namespace ShopWeb.App.Client;
+namespace SmallShopWeb.ShopWeb.Application.Client;
 
 public interface IShopApiClient
 {

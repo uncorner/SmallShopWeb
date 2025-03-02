@@ -1,5 +1,7 @@
-using SmallShopWeb.ShopCommon.App;
+using Microsoft.AspNetCore.Mvc.Razor;
+using SmallShopWeb.ShopCommon.Util;
 using SmallShopWeb.ShopWeb.Infrastructure;
+using SmallShopWeb.ShopWeb.Util;
 
 namespace SmallShopWeb.ShopWeb;
 
@@ -11,6 +13,13 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
+        builder.Services.Configure<RazorViewEngineOptions>(o =>
+        {
+            o.ViewLocationFormats.Clear();
+            o.ViewLocationFormats.Add("/Presentation/Views/{1}/{0}" + RazorViewEngine.ViewExtension);
+            o.ViewLocationFormats.Add("/Presentation/Views/Shared/{0}" + RazorViewEngine.ViewExtension);
+        });
+        
         builder.Services.AddCustomServices();
 
         var app = builder.Build();

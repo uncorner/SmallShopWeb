@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Hosting;
 
-namespace SmallShopWeb.ShopCommon.App;
+namespace SmallShopWeb.ShopCommon.Util;
 
 public static class HostEnvironmentExtensions
 {

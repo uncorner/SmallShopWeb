@@ -1,8 +1,8 @@
 ﻿using Polly;
-using ShopWeb.App.Client;
-using ShopWeb.Infrastructure.Client;
+using SmallShopWeb.ShopWeb.Application.Client;
+using SmallShopWeb.ShopWeb.Infrastructure.Client;
 
-namespace SmallShopWeb.ShopWeb.Infrastructure;
+namespace SmallShopWeb.ShopWeb.Util;
 
 static class ServiceProviderExtensions
 {

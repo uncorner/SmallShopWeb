@@ -1,8 +1,9 @@
-﻿using ShopWeb.App.Client;
-using SmallShopWeb.ShopCommon.Dto;
-using SmallShopWeb.ShopWeb.App;
+﻿using SmallShopWeb.ShopCommon.Dto;
+using SmallShopWeb.ShopWeb.Application;
+using SmallShopWeb.ShopWeb.Application.Client;
+using SmallShopWeb.ShopWeb.Util;
 
-namespace ShopWeb.Infrastructure.Client;
+namespace SmallShopWeb.ShopWeb.Infrastructure.Client;
 
 class ShopApiClient : IShopApiClient
 {

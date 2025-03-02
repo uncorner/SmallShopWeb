@@ -19,4 +19,13 @@
     <ProjectReference Include="..\ShopCommon\ShopCommon.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <AdditionalFiles Include="Presentation\Views\Home\Index.cshtml" />
+    <AdditionalFiles Include="Presentation\Views\Shared\Error.cshtml" />
+    <AdditionalFiles Include="Presentation\Views\Shared\_Layout.cshtml" />
+    <AdditionalFiles Include="Presentation\Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <AdditionalFiles Include="Presentation\Views\_ViewImports.cshtml" />
+    <AdditionalFiles Include="Presentation\Views\_ViewStart.cshtml" />
+  </ItemGroup>
+
 </Project>
