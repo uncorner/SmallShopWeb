@@ -1,8 +1,8 @@
-﻿using Grpc.Core;
+﻿using System.Net;
+using Grpc.Core;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
 
-namespace SmallShopWeb.ShopAPI.App.Controllers
+namespace SmallShopWeb.ShopAPI.Presentation.Controllers
 {
     internal static class ControllerBaseExtensions
     {

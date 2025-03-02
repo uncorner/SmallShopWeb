@@ -1,8 +1,7 @@
-﻿using SmallShopWeb.ShopAPI.App;
-using SmallShopWeb.ShopAPI.App.Client;
-using SmallShopWeb.ShopAPI.Infrastructure.Client;
+﻿using SmallShopWeb.ShopAPI.Application.CatalogClient;
+using SmallShopWeb.ShopAPI.Infrastructure.GrpcClient;
 
-namespace SmallShopWeb.ShopAPI.Infrastructure;
+namespace SmallShopWeb.ShopAPI.Util;
 
 internal static class ServiceProviderExtensions
 {

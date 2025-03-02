@@ -1,4 +1,4 @@
-﻿namespace SmallShopWeb.ShopAPI.App.Client;
+﻿namespace SmallShopWeb.ShopAPI.Application.CatalogClient;
 
 public partial class DecimalValue
 {

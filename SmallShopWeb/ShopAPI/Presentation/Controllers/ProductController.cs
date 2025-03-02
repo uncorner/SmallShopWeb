@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SmallShopWeb.ShopAPI.Application.CatalogClient;
 using SmallShopWeb.ShopCommon.Dto;
-using SmallShopWeb.ShopAPI.App.Client;
-using CreateProductData = SmallShopWeb.Catalog.App.Dto.CreateProductData;
-using UpdateProductData = SmallShopWeb.Catalog.App.Dto.UpdateProductData;
+using CreateProductData = SmallShopWeb.ShopAPI.Application.Dto.CreateProductData;
+using UpdateProductData = SmallShopWeb.ShopAPI.Application.Dto.UpdateProductData;
 
-namespace SmallShopWeb.ShopAPI.App.Controllers
+namespace SmallShopWeb.ShopAPI.Presentation.Controllers
 {
     [Route("api")]
     [ApiController]
@@ -38,7 +38,7 @@ namespace SmallShopWeb.ShopAPI.App.Controllers
         {
             return await this.HandleErrors(logger, async () =>
             {
-                var productDatas = datas.Select(i => new Client.CreateProductData()
+                var productDatas = datas.Select(i => new Application.CatalogClient.CreateProductData()
                 {
                     Name = i.Name,
                     Description = i.Description,
@@ -59,7 +59,7 @@ namespace SmallShopWeb.ShopAPI.App.Controllers
         {
             return await this.HandleErrors(logger,async () =>
             {
-                var productDatas = datas.Select(i => new Client.UpdateProductData()
+                var productDatas = datas.Select(i => new Application.CatalogClient.UpdateProductData()
                 {
                     Id = i.Id,
                     Name = i.Name,

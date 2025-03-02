@@ -1,6 +1,6 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 
-namespace SmallShopWeb.ShopAPI.App.Client
+namespace SmallShopWeb.ShopAPI.Application.CatalogClient
 {
     public interface IProductCatalogClient
     {

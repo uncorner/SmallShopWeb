@@ -26,7 +26,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos\catalog.proto" GrpcServices="Client" />
+    <Folder Include="Presentation\" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Protobuf Include="Infrastructure\GrpcClient\Protos\catalog.proto" GrpcServices="Client" />
   </ItemGroup>
 
 </Project>

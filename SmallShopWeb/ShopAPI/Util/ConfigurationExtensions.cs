@@ -1,4 +1,4 @@
-﻿namespace SmallShopWeb.ShopAPI.App;
+﻿namespace SmallShopWeb.ShopAPI.Util;
 
 static class ConfigurationExtensions
 {

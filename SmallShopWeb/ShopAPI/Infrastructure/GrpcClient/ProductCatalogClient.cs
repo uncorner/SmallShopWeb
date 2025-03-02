@@ -1,7 +1,7 @@
 ﻿using Google.Protobuf.WellKnownTypes;
-using SmallShopWeb.ShopAPI.App.Client;
+using SmallShopWeb.ShopAPI.Application.CatalogClient;
 
-namespace SmallShopWeb.ShopAPI.Infrastructure.Client
+namespace SmallShopWeb.ShopAPI.Infrastructure.GrpcClient
 {
     internal class ProductCatalogClient : IProductCatalogClient
     {
