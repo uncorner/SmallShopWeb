@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SmallShopWeb.Catalog.App.Entities
+namespace SmallShopWeb.Catalog.Domain.Entities
 {
     public class Product
     {

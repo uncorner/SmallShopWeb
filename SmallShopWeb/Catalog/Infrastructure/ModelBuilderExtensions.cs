@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SmallShopWeb.Catalog.App.Entities;
+using SmallShopWeb.Catalog.Domain.Entities;
 
 namespace SmallShopWeb.Catalog.Infrastructure
 {

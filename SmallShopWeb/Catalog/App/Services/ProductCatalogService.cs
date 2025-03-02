@@ -1,7 +1,7 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
-using SmallShopWeb.Catalog.App.Entities;
 using SmallShopWeb.Catalog.App.Repository;
+using SmallShopWeb.Catalog.Domain.Entities;
 
 namespace SmallShopWeb.Catalog.App.Services
 {
