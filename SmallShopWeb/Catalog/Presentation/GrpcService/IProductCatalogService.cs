@@ -1,7 +1,7 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 
-namespace SmallShopWeb.Catalog.App.Services
+namespace SmallShopWeb.Catalog.Presentation.GrpcService
 {
     public interface IProductCatalogService
     {

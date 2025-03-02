@@ -3,7 +3,7 @@ using Grpc.Core;
 using SmallShopWeb.Catalog.App.Repository;
 using SmallShopWeb.Catalog.Domain.Entities;
 
-namespace SmallShopWeb.Catalog.App.Services
+namespace SmallShopWeb.Catalog.Presentation.GrpcService
 {
     public class ProductCatalogService : IProductCatalogService
     {

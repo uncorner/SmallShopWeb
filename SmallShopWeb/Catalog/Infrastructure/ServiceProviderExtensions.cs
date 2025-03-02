@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmallShopWeb.Catalog.App.Repository;
-using SmallShopWeb.Catalog.App.Services;
+using SmallShopWeb.Catalog.Presentation.GrpcService;
 using SmallShopWeb.Catalog.Infrastructure.Repository;
 
 namespace SmallShopWeb.Catalog.Infrastructure

@@ -11,14 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!--<Compile Remove="Models\**" />
-    <Content Remove="Models\**" />
-    <EmbeddedResource Remove="Models\**" />
-    <None Remove="Models\**" />-->
-	<Protobuf Include="Protos\catalog.proto" GrpcServices="Server" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ShopCommon\ShopCommon.csproj" />
   </ItemGroup>
 
@@ -34,6 +26,10 @@
 
   <ItemGroup>
     <Folder Include="Domain\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Presentation\GrpcService\Protos\catalog.proto" GrpcServices="Server" />
   </ItemGroup>
 
 </Project>
