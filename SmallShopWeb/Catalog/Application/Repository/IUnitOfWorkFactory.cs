@@ -1,7 +1,6 @@
-﻿namespace SmallShopWeb.Catalog.Application.Repository
+﻿namespace SmallShopWeb.Catalog.Application.Repository;
+
+public interface IUnitOfWorkFactory
 {
-    public interface IUnitOfWorkFactory
-    {
-        public IUnitOfWork CreateUnitOfWork();
-    }
+    public IUnitOfWork CreateUnitOfWork();
 }
