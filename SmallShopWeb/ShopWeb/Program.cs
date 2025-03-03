@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc.Razor;
 using SmallShopWeb.ShopCommon.Util;
-using SmallShopWeb.ShopWeb.Infrastructure;
 using SmallShopWeb.ShopWeb.Util;
 
 namespace SmallShopWeb.ShopWeb;
