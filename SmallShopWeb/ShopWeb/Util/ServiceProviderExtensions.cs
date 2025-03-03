@@ -1,6 +1,6 @@
 ﻿using Polly;
-using SmallShopWeb.ShopWeb.Application.Client;
-using SmallShopWeb.ShopWeb.Infrastructure.Client;
+using SmallShopWeb.ShopWeb.Application;
+using SmallShopWeb.ShopWeb.Infrastructure.WebClient;
 
 namespace SmallShopWeb.ShopWeb.Util;
 

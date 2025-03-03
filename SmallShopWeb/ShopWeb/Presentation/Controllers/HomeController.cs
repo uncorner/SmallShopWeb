@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using SmallShopWeb.ShopCommon.Dto;
-using SmallShopWeb.ShopWeb.Application.Client;
+using SmallShopWeb.ShopWeb.Application;
 using SmallShopWeb.ShopWeb.Presentation.Models;
 
 namespace SmallShopWeb.ShopWeb.Presentation.Controllers;
